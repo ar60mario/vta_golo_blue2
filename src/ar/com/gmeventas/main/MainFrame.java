@@ -34,11 +34,13 @@ import ar.com.gmeventas.frame.VerIvaVentasFrame;
 import ar.com.gmeventas.frame.VerVentasXClienteFrame;
 import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.util.LectorDeExcel;
-import java.io.File;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import java.io.File;
 
 /**
  *
@@ -106,6 +108,8 @@ public class MainFrame extends javax.swing.JFrame {
         salirMnu = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         versionMnu = new javax.swing.JMenuItem();
+		
+		
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GOLOSOL . Sistema de Ventas");
