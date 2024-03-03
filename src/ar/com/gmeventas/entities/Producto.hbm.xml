@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ar.com.gmeventas.entities.Producto" schema="golosolventas" table="producto">
+        <id name="id" column="ID">
+            <generator class="identity"/>
+        </id>
+        <property name="codigo" type="integer" column="CODIGO" unique="true"/>
+        <property name="codigoBarras" type="long" column="CODIGO_BARRAS"/>
+        <property name="detalle" type="string" column="DETALLE"/>
+        <property name="precio" type="double" column="PRECIO"/>
+        <property name="impuesto" type="float" column="IMPUESTO"/>
+        <property name="sugerido" type="double" column="SUGERIDO"/>
+        <property name="inactivo" type="boolean" column="INACTIVO"/>
+        <property name="stock" type="float" column="STOCK"/>
+        <property name="stockMinimo" type="float" column="STOCK_MINIMO"/>
+        <property name="costoP" type="double" column="COSTO_P"/>
+        <property name="costoI" type="double" column="COSTO_I"/>
+        <property name="auto" type="boolean" column="AUTO"/>
+        <many-to-one name="rubro"
+                    class="ar.com.gmeventas.entities.Rubro"
+                     lazy="false">
+                     <column name="ID_RUBRO" not-null="false"/>
+        </many-to-one>
+        <many-to-one name="subRubro"
+                    class="ar.com.gmeventas.entities.SubRubro"
+                     lazy="false">
+                     <column name="ID_SUB_RUBRO" not-null="false"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

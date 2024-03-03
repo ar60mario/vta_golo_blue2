@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ar.com.gmeventas.entities.CodigoBarras" schema="golosolventas" table="codigo_barras">
+        <id name="id" column="ID">
+            <generator class="identity"/>
+        </id>
+        <property name="codigo" type="long" column="CODIGO"/>
+        <many-to-one name="producto"
+                    class="ar.com.gmeventas.entities.Producto"
+                     lazy="false">
+                     <column name="ID_PRODUCTO" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
