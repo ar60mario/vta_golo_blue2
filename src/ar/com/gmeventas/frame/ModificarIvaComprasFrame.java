@@ -6,6 +6,7 @@
 package ar.com.gmeventas.frame;
 
 import ar.com.gmeventas.entities.IvaCompras;
+import ar.com.gmeventas.util.Constantes;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
@@ -28,6 +29,8 @@ public class ModificarIvaComprasFrame extends javax.swing.JFrame {
      */
     public ModificarIvaComprasFrame(IvaCompras ic) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         this.ivaCompras = ic;
         llenarCampos(ivaCompras);

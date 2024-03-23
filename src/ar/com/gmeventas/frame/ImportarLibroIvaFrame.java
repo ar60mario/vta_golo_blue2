@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.IvaVentas;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.IvaVentasService;
+import ar.com.gmeventas.util.Constantes;
 import ar.com.gmeventas.util.LectorDeExcel;
 import java.io.File;
 import java.text.DecimalFormat;
@@ -35,6 +36,8 @@ public class ImportarLibroIvaFrame extends javax.swing.JFrame {
      */
     public ImportarLibroIvaFrame(File archivo) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.archivoImportado = archivo;
         try {
             this.llenarTablaLibroIvaImportado();

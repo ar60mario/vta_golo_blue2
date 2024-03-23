@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.Rubro;
 import ar.com.gmeventas.entities.SubRubro;
 import ar.com.gmeventas.services.RubroService;
 import ar.com.gmeventas.services.SubRubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +25,8 @@ public class NuevoSubRubroFrame extends javax.swing.JFrame {
      */
     public NuevoSubRubroFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         
     }

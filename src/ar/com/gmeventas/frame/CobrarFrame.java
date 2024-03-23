@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ClienteService;
+import ar.com.gmeventas.util.Constantes;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +35,8 @@ public class CobrarFrame extends javax.swing.JFrame {
      */
     public CobrarFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

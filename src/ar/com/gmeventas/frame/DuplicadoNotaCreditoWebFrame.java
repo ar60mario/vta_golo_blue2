@@ -13,6 +13,7 @@ import ar.com.gmeventas.entities.RenglonNotaCredito;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -108,8 +109,10 @@ public class DuplicadoNotaCreditoWebFrame extends javax.swing.JFrame {
      * Creates new form FacturaFrame
      */
     public DuplicadoNotaCreditoWebFrame(IvaVentas iv) {
-        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
+//        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.iv = iv;
         this.setLocationRelativeTo(null);
         limpiarCampos();

@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Producto;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,8 +31,10 @@ public class AbmProductoFrame extends javax.swing.JFrame {
      * Creates new form AbmProductoFrame
      */
     public AbmProductoFrame(String filtro) {
-        getContentPane().setBackground(new java.awt.Color(0, 139, 139));
+//        getContentPane().setBackground(new java.awt.Color(0, 139, 139));
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.filtro = filtro;
         limpiarCampos();
         llenarTabla();

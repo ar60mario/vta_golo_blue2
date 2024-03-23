@@ -14,6 +14,7 @@ import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.services.IvaComprasServices;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.ProveedorService;
+import ar.com.gmeventas.util.Constantes;
 import static java.lang.Math.rint;
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -52,6 +53,8 @@ public class NuevoIvaComprasFrame extends javax.swing.JFrame {
      */
     public NuevoIvaComprasFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         cargarConfiguracion();
     }

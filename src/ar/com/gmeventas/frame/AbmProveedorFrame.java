@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.Domicilio;
 import ar.com.gmeventas.entities.Proveedor;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ProveedorService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,6 +30,8 @@ public class AbmProveedorFrame extends javax.swing.JFrame {
      */
     public AbmProveedorFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.llenarTabla();
     }
 

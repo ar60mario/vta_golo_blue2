@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.RenglonFactura;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,8 @@ public class VerComparativaFacturasEntreFechasFrame extends javax.swing.JFrame {
      */
     public VerComparativaFacturasEntreFechasFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

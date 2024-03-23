@@ -64,7 +64,17 @@ public class IvaVentasBO {
         }
         return fact;
     }
-    //
+    
+    public List<IvaVentas> getSoloFacturasEntreFechas(Date fd, Date fa) throws Exception {
+        List<IvaVentas> fact = null;
+        try {
+            fact = (List<IvaVentas>) dao.getSoloFacturasEntreFechas(fd, fa);
+        } catch (HibernateException ex) {
+            throw new Exception(ex);
+        }
+        return fact;
+    }
+    
     public List<IvaVentas> getFacturasByFecha(Date fd) throws Exception {
         List<IvaVentas> fact = null;
         try {

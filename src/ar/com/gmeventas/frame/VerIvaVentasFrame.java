@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.RenglonFactura;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +46,8 @@ public class VerIvaVentasFrame extends javax.swing.JFrame {
      */
     public VerIvaVentasFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         llenarTabla();
     }

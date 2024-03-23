@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 
 import ar.com.gmeventas.entities.Rubro;
 import ar.com.gmeventas.services.RubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,6 +24,8 @@ public class NuevoRubroFrame extends javax.swing.JFrame {
      */
     public NuevoRubroFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         
     }

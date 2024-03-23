@@ -9,6 +9,7 @@ import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.entities.Pedido;
 import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.PedidoService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -39,6 +40,8 @@ public class PedidosPendientes extends javax.swing.JFrame {
      */
     public PedidosPendientes() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
         limpiarCampos();
     }

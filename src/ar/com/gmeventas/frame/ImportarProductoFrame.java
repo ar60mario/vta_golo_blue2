@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Producto;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import ar.com.gmeventas.util.LectorDeExcel;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class ImportarProductoFrame extends javax.swing.JFrame {
      */
     public ImportarProductoFrame(File archivo) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.archivoImportado = archivo;
         try{
             this.llenarTablaProductoImportado();

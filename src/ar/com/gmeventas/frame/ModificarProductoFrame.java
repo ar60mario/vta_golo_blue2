@@ -12,6 +12,7 @@ import ar.com.gmeventas.entities.SubRubro;
 import ar.com.gmeventas.services.ProductoService;
 import ar.com.gmeventas.services.RubroService;
 import ar.com.gmeventas.services.SubRubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,8 @@ public class ModificarProductoFrame extends javax.swing.JFrame {
      */
     public ModificarProductoFrame(Producto prod, String filtro) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.filtro = filtro;
         this.producto=prod;
         limpiarCampos();

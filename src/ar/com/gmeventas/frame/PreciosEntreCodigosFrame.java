@@ -24,6 +24,8 @@ public class PreciosEntreCodigosFrame extends javax.swing.JFrame {
      */
     public PreciosEntreCodigosFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

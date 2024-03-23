@@ -9,6 +9,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Domicilio;
 import ar.com.gmeventas.entities.Proveedor;
 import ar.com.gmeventas.services.ProveedorService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -25,6 +26,8 @@ public class NuevoProveedorFrame extends javax.swing.JFrame {
      */
     public NuevoProveedorFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         llenarCombo();
     }

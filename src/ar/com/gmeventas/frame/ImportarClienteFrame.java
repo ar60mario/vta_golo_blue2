@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ClienteService;
+import ar.com.gmeventas.util.Constantes;
 import ar.com.gmeventas.util.LectorDeExcel;
 import java.io.File;
 import java.util.List;
@@ -30,6 +31,8 @@ public class ImportarClienteFrame extends javax.swing.JFrame {
      */
     public ImportarClienteFrame(File archivo) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.archivoImportado = archivo;
         try{
             this.llenarTablaClienteImportado();

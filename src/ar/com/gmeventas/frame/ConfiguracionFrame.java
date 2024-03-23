@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Configuracion;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ConfiguracionService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class ConfiguracionFrame extends javax.swing.JFrame {
      */
     public ConfiguracionFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         linpiarCampos();
         leerArchivo();
     }

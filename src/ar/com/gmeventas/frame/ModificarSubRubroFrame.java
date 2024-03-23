@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ar.com.gmeventas.frame;
 
 import ar.com.gmeventas.entities.SubRubro;
 import ar.com.gmeventas.services.SubRubroService;
+import ar.com.gmeventas.util.Constantes;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,18 +15,21 @@ import javax.swing.JOptionPane;
  * @author Mario
  */
 public class ModificarSubRubroFrame extends javax.swing.JFrame {
+
     SubRubro subRubro;
+
     /**
      * Creates new form ModificarSubRubroFrame
      */
-    public ModificarSubRubroFrame() {
-        initComponents();
-    }
+
     public ModificarSubRubroFrame(SubRubro subRub) {
-        this.subRubro=subRub;
         initComponents();
+        this.subRubro = subRub;
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.llenarCampos(subRubro);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,7 +155,7 @@ public class ModificarSubRubroFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarSubRubroFrame().setVisible(true);
+                new ModificarSubRubroFrame(null).setVisible(true);
             }
         });
     }
@@ -174,12 +177,11 @@ public class ModificarSubRubroFrame extends javax.swing.JFrame {
     private void guardar() {
         subRubro.setCodigo(Integer.valueOf(codigoTxt.getText()));
         subRubro.setDetalle(nombreTxt.getText());
-        try{
+        try {
             new SubRubroService().updateSubRubro(subRubro);
             JOptionPane.showMessageDialog(this, "SubRubro - SubRubro guardado correctamente");
-                
-        }
-        catch(Exception ex){
+
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Subrubro -  Error al guardar el cliente");
         }
         AbmSubRubroFrame asf = new AbmSubRubroFrame();

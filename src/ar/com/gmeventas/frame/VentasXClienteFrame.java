@@ -14,6 +14,7 @@ import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.RenglonFacturaService;
 import ar.com.gmeventas.services.RubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,6 +39,8 @@ public class VentasXClienteFrame extends javax.swing.JFrame {
      */
     public VentasXClienteFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

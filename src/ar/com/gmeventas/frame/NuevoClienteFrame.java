@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.Domicilio;
 import ar.com.gmeventas.entities.TipoDoc;
 import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.TipoDocService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,8 @@ public class NuevoClienteFrame extends javax.swing.JFrame {
      */
     public NuevoClienteFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         llenarCombos();
         comboFormasPago.setSelectedIndex(1);//por defecto que sea el index 1

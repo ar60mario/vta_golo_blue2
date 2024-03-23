@@ -20,6 +20,7 @@ import ar.com.gmeventas.services.FacturaService;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.ProductoService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.Dispatch;
 import com.jacob.com.LibraryLoader;
@@ -130,8 +131,10 @@ public class MostrarDuplicadoNotaCreditoFrame extends javax.swing.JFrame {
      * Creates new form FacturaFrame
      */
     public MostrarDuplicadoNotaCreditoFrame(IvaVentas iv) {
-        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
+//        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
         limpiarCampos();
         bloquearCampos();

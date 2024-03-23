@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.entities.IvaCompras;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.IvaComprasServices;
+import ar.com.gmeventas.util.Constantes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class AbmIvaComprasFrame extends javax.swing.JFrame {
      */
     public AbmIvaComprasFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         llenarCombos();
 //        this.llenarTabla();

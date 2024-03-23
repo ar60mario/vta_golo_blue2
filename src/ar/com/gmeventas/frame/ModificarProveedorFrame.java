@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.entities.Domicilio;
 import ar.com.gmeventas.entities.Proveedor;
 import ar.com.gmeventas.services.ProveedorService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -25,12 +26,11 @@ public class ModificarProveedorFrame extends javax.swing.JFrame {
     /**
      * Creates new form ModificarProveedorFrame
      */
-    public ModificarProveedorFrame() {
-        initComponents();
-        
-    }
+    
     public ModificarProveedorFrame(Proveedor prove) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.proveedor=prove;
         this.llenarCampo(prove);
     }
@@ -418,7 +418,7 @@ public class ModificarProveedorFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarProveedorFrame().setVisible(true);
+                new ModificarProveedorFrame(null).setVisible(true);
             }
         });
     }

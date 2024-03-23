@@ -17,8 +17,10 @@ import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.services.FacturaService;
 import ar.com.gmeventas.services.ProductoService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import ar.com.gmeventas.util.DesktopApi;
 import ar.com.gmeventas.util.PDFBuilder;
+import ar.com.gmeventas.util.UtilFrame;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Writer;
 import com.google.zxing.WriterException;
@@ -164,8 +166,9 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
      * Creates new form FacturaFrame
      */
     public NotaCreditoWebDeFacturaFrame(IvaVentas factura) {
-        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(), Constantes.getG(), Constantes.getB()));
         initComponents();
+//        getContentPane().setBackground(new java.awt.Color(Constantes.getR(), Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
         this.factura = factura;
         limpiarCampos();
@@ -819,7 +822,7 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarBtnActionPerformed
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
-        eliminarItemBtn.setEnabled(false);
+        eliminarItemBtn.setEnabled(true);
         texto1PieFacturaTxt.setEnabled(false);
         texto2PieFacturaTxt.setEnabled(false);
         codigoBarrasTxt.setText("");
@@ -1007,7 +1010,7 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarItemBtnActionPerformed
 
     private void agregarBtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_agregarBtnKeyPressed
-        eliminarItemBtn.setEnabled(false);
+        eliminarItemBtn.setEnabled(true);
         texto1PieFacturaTxt.setEnabled(false);
         texto2PieFacturaTxt.setEnabled(false);
         codigoBarrasTxt.setText("");
@@ -1076,7 +1079,7 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
             grabarCantidadBtn.setEnabled(true);
             tablaFactura.setEnabled(false);
             agregarBtn.setEnabled(false);
-            eliminarItemBtn.setEnabled(false);
+            eliminarItemBtn.setEnabled(true);
             leerPrecioBtn.setEnabled(false);
             nuevoPrecioTxt.setEnabled(false);
             terminarBtn.setEnabled(false);
@@ -1158,7 +1161,7 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
             nuevoPrecioTxt.requestFocus();
             tablaFactura.setEnabled(false);
             agregarBtn.setEnabled(false);
-            eliminarItemBtn.setEnabled(false);
+            eliminarItemBtn.setEnabled(true);
             leerCantidadBtn.setEnabled(false);
             nuevaCantidadTxt.setEnabled(false);
             terminarBtn.setEnabled(false);
@@ -1413,7 +1416,7 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
         terminarBtn.setEnabled(false);
         incorporarAFacturaBtn.setEnabled(false);
         buscarProductoXNombreBtn.setEnabled(false);
-        eliminarItemBtn.setEnabled(false);
+        eliminarItemBtn.setEnabled(true);
         descuentoBtn.setEnabled(false);
         ivaTxt.setEditable(false);
         codigoBarrasTxt.setEnabled(false);
@@ -1625,17 +1628,29 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
                 numeroFacturaPapel = String.valueOf(cbte_nro);
                 int largo = ("00000000" + numeroFacturaPapel).length();
                 numeroFacturaPapel = ("00000000" + numeroFacturaPapel).substring(largo - 8, largo);
-                String imp_total = df.format(-totalFactura).toString().replaceAll("\\,", "\\.");//"124.00";
+                if (totalFactura < 0.0) {
+                    totalFactura = totalFactura * -1;
+                }
+                if (totalGravado < 0.00) {
+                    totalGravado = totalGravado * -1;
+                }
+                if (totalIva < 0.00) {
+                    totalIva = totalIva * -1;
+                }
+                if (totalImpuesto < 0.00) {
+                    totalImpuesto = totalImpuesto * -1;
+                }
+                String imp_total = df.format(totalFactura).replaceAll("\\,", "\\.");//"124.00";
                 String imp_tot_conc = "0.00";
-                String imp_neto = df.format(-totalGravado).toString().replaceAll("\\,", "\\.");
-                String imp_iva = df.format(-totalIva).toString().replaceAll("\\,", "\\.");//"21.00"
+                String imp_neto = df.format(totalGravado).toString().replaceAll("\\,", "\\.");
+                String imp_iva = df.format(totalIva).toString().replaceAll("\\,", "\\.");//"21.00"
                 int internos = 0;
                 if (totalImpuesto != 0.00) {
-                    internos = (int) rint(-totalImpuesto * 100);
+                    internos = (int) rint(totalImpuesto * 100);
                 }
                 String imp_trib = "", imp_op_ex = "0.00";
                 if (internos > 0) {
-                    imp_trib = df.format(-totalImpuesto).toString().replaceAll("\\,", "\\.");
+                    imp_trib = df.format(totalImpuesto).toString().replaceAll("\\,", "\\.");
                 } else {
                     imp_trib = "0.00";
                 }
@@ -1653,19 +1668,37 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
                         new Variant(fecha_cbte), new Variant(fecha_venc_pago),
                         new Variant(fecha_serv_desde), new Variant(fecha_serv_hasta),
                         new Variant(moneda_id), new Variant(moneda_ctz));
+                //                 Agrego los comprobantes asociados: 
+//              
+                String td_f;
+//if (false) { // solo nc/nd 
+                if (factura.getCliente().getCategoriaDeIva().equals(1)
+                        || factura.getCliente().getCategoriaDeIva().equals(2)) {
+                    td_f = "1";
+                } else {
+                    td_f = "6";
+                }
+                String nc = factura.getNumeroFactura().toString();
+                Variant cbte_asoc_tipo = new Variant(td_f),
+                        cbte_asoc_pto_vta = new Variant(pto_vta),
+                        cbte_asoc_nro = new Variant(nc);
+                Dispatch.call(wsfev1, "AgregarCmpAsoc",
+                        cbte_asoc_tipo, cbte_asoc_pto_vta, cbte_asoc_nro);
+//                }
+//                 Agrego impuestos varios 
                 if (internos > 0) {
                     Variant tributo_id = new Variant(4),
                             tributo_desc = new Variant("Impuestos internos"),
                             tributo_base_imp = new Variant("0.00"),
                             tributo_alic = new Variant("0.00"),
-                            tributo_importe = new Variant(df.format(-totalImpuesto).toString().replaceAll("\\,", "\\."));
+                            tributo_importe = new Variant(df.format(totalImpuesto).toString().replaceAll("\\,", "\\."));
                     Dispatch.call(wsfev1, "AgregarTributo",
                             tributo_id, tributo_desc, tributo_base_imp,
                             tributo_alic, tributo_importe);
                 }
                 Variant iva_id = new Variant(5),
-                        iva_base_imp = new Variant(df.format(-totalGravado).toString().replaceAll("\\,", "\\.")),
-                        iva_importe = new Variant(df.format(-totalIva).toString().replaceAll("\\,", "\\."));
+                        iva_base_imp = new Variant(df.format(totalGravado).toString().replaceAll("\\,", "\\.")),
+                        iva_importe = new Variant(df.format(totalIva).toString().replaceAll("\\,", "\\."));
                 Dispatch.call(wsfev1, "AgregarIva",
                         iva_id, iva_base_imp, iva_importe);
                 Dispatch.put(wsfev1, "Reprocesar", new Variant(false));
@@ -2388,6 +2421,27 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
         codigoProductoTxt.requestFocus();
     }
 
+    private void agregarProducto2() {
+        agregarBtn.setEnabled(false);
+//        if (nro > 0) {
+        terminarBtn.setEnabled(true);
+//        } else {
+//            terminarBtn.setEnabled(false);
+//        }
+        incorporarAFacturaBtn.setEnabled(false);
+        if (nro > 0) {
+            cancelarBtn.setEnabled(true);
+        }
+        buscarProductoXNombreBtn.setEnabled(false);
+        codigoProductoTxt.setEnabled(true);
+        codigoBarrasTxt.setEnabled(true);
+        cantidadTxt.setEnabled(true);
+        nombreProductoABuscarTxt.setEnabled(true);
+        nombreProductoConsultaTxt.setEnabled(true);
+        comboProductos.setEnabled(true);
+        codigoProductoTxt.requestFocus();
+    }
+
     private void buscarProducto() {
         filtro = "";
         if (nro < maxNro - 1) {
@@ -2619,6 +2673,17 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
         importeMassalinTxt.setText(String.valueOf(df.format(importeTotalMassalin)));
         cantidadItemsTxt.setText(String.valueOf(nro));
         totalTxt.setText(String.valueOf(df.format(totalFactura)));
+//        System.out.println("total factura");
+//        System.out.println(totalFactura);
+//        System.out.println("total gravado");
+//        System.out.println(totalGravado);
+//        System.out.println("total impuesto");
+//        System.out.println(totalImpuesto);
+//        System.out.println("total iva");
+//        System.out.println(totalIva);
+//        System.out.println("porcentual iva");
+//        System.out.println(porcentualIva);
+//        System.exit(0);
     }
 
     private void consultarProductoBarras() {
@@ -2647,7 +2712,66 @@ public class NotaCreditoWebDeFacturaFrame extends javax.swing.JFrame {
     }
 
     private void cargarFrame(IvaVentas factura) {
-        
+        clienteFactura = factura.getCliente();
+        codigoTxt.setText(clienteFactura.getCodigo());
+        buscar();
+        cancelarBtn.setEnabled(true);
+        fechaTxt.setText(sdf.format(new Date()));
+        List<RenglonFactura> renglonesFactura = null;
+        try {
+            renglonesFactura = new RenglonFacturaService().getAllRenglonFacturaFromIvaVentas(factura);
+        } catch (Exception ex) {
+            Logger.getLogger(NotaCreditoWebDeFacturaFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (renglonesFactura != null && !renglonesFactura.isEmpty()) {
+            UtilFrame.limpiarTabla(tablaFactura);
+            renglonFactura = new ArrayList<>();
+            DefaultTableModel tbl = (DefaultTableModel) tablaFactura.getModel();
+            for (RenglonFactura rf : renglonesFactura) {
+                RenglonNotaCredito rnc = new RenglonNotaCredito();
+                rnc.setCantidad(rf.getCantidad());
+                cantidad = rf.getCantidad();
+                rnc.setCostoG(rf.getCostoG());
+                rnc.setCostoI(rf.getCostoI());
+                rnc.setDescripcion(rf.getDescripcion());
+                rnc.setDescuento(rf.getDescuento());
+                rnc.setExento(rf.getExento());
+                rnc.setGravado(rf.getGravado());
+                gravado = rf.getGravado();
+                rnc.setImpuesto(rf.getImpuesto());
+                impuesto = rf.getImpuesto();
+                totalLinea = rf.getTotal();
+                precioFinal = totalLinea / cantidad;
+                rnc.setItemNro(rf.getItemNro());
+                rnc.setIva(rf.getIva());
+                iva = rf.getIva();
+                rnc.setNoGravado(rf.getNoGravado());
+                rnc.setProducto(rf.getProducto());
+                Producto pro = rf.getProducto();
+                rnc.setSugerido(rf.getSugerido());
+                rnc.setTotal(rf.getTotal());
+                renglonFactura.add(rnc);
+                calcularTotales();
+                Object[] fila = new Object[10];
+                fila[0] = pro.getCodigo();
+                fila[1] = df1.format(cantidad);
+                fila[2] = pro.getDetalle();
+                fila[3] = df.format(precioFinal);
+                fila[4] = df.format(gravado);
+                fila[5] = df.format(impuesto);
+                fila[6] = df.format(iva);
+                fila[7] = df.format(0.0);
+                fila[8] = df.format(totalLinea);
+                fila[9] = df.format(pro.getSugerido());
+                tbl.addRow(fila);
+            }
+            tablaFactura.setModel(tbl);
+//            cantidadItemsTxt.setText(nro.toString());
+
+        }
+        descuentoVolumenTxt.setText(df.format(factura.getDescuentoGlobal()));
+        totalTxt.setText(df.format(factura.getTotal()));
+        agregarProducto2();
     }
 
 //    private void guardarRepositorio() {

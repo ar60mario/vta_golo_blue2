@@ -30,9 +30,11 @@ import ar.com.gmeventas.frame.PreciosEntreCodigosFrame;
 import ar.com.gmeventas.frame.RegenerarFcNcFrame;
 import ar.com.gmeventas.frame.VentasCigarrillosByPeriodoFrame;
 import ar.com.gmeventas.frame.VerComparativaFacturasEntreFechasFrame;
+import ar.com.gmeventas.frame.VerFacturasEntreFechasFrame;
 import ar.com.gmeventas.frame.VerIvaVentasFrame;
 import ar.com.gmeventas.frame.VerVentasXClienteFrame;
 import ar.com.gmeventas.services.ConfiguracionService;
+import ar.com.gmeventas.util.Constantes;
 import ar.com.gmeventas.util.LectorDeExcel;
 
 import java.util.logging.Level;
@@ -55,9 +57,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
         iniciarConfiguracionBtn.setVisible(false);
-        notaCreditoBtn.setVisible(false);
+        notaCreditoBtn.setVisible(true);
     }
 
     /**
@@ -108,8 +112,6 @@ public class MainFrame extends javax.swing.JFrame {
         salirMnu = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         versionMnu = new javax.swing.JMenuItem();
-		
-		
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GOLOSOL . Sistema de Ventas");
@@ -420,11 +422,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(notaCreditoBtn)
                 .addGap(18, 18, 18)
                 .addComponent(cobrarBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(salirBtn)
                 .addGap(18, 18, 18)
                 .addComponent(iniciarConfiguracionBtn)
-                .addGap(111, 111, 111))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(salirBtn)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -550,7 +552,8 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void notaCreditoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notaCreditoBtnActionPerformed
-        NotaCreditoWebFrame ncwf = new NotaCreditoWebFrame();
+//        NotaCreditoWebFrame ncwf = new NotaCreditoWebFrame();
+        VerFacturasEntreFechasFrame ncwf = new VerFacturasEntreFechasFrame();
         ncwf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_notaCreditoBtnActionPerformed

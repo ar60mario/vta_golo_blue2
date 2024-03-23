@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.Producto;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.CodigosBarraService;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +29,8 @@ public class IngresarCodigosBarraFrame extends javax.swing.JFrame {
      */
     public IngresarCodigosBarraFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

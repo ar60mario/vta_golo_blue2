@@ -9,6 +9,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.entities.Domicilio;
 import ar.com.gmeventas.services.ClienteService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,6 +31,8 @@ public class ModificarClienteFrame extends javax.swing.JFrame {
      */
     public ModificarClienteFrame(Cliente clie) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         //limpiarCampos();
         this.cliente = clie;
         llenarCampos(cliente);

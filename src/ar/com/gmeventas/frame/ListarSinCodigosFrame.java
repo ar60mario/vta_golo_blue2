@@ -9,6 +9,7 @@ import ar.com.gmeventas.entities.Producto;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.CodigosBarraService;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +26,8 @@ public class ListarSinCodigosFrame extends javax.swing.JFrame {
      */
     public ListarSinCodigosFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         llenarTabla();
     }
 

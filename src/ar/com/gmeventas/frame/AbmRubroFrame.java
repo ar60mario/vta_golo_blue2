@@ -4,6 +4,7 @@ import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.entities.Rubro;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.RubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,18 +15,21 @@ import javax.swing.table.DefaultTableModel;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Administrador
  */
 public class AbmRubroFrame extends javax.swing.JFrame {
-     List <Rubro>listadoRubro = new ArrayList<Rubro>();
+
+    List<Rubro> listadoRubro = new ArrayList<Rubro>();
+
     /**
      * Creates new form AbmRubroFrame
      */
     public AbmRubroFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.llenartabla();
     }
 
@@ -48,7 +52,6 @@ public class AbmRubroFrame extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         archivoMenu = new javax.swing.JMenu();
         nuevoMenuBtn = new javax.swing.JMenuItem();
-        modificarMenuBtn = new javax.swing.JMenuItem();
         eliminarMenuBtn = new javax.swing.JMenuItem();
         VovlerMenu = new javax.swing.JMenu();
 
@@ -103,14 +106,6 @@ public class AbmRubroFrame extends javax.swing.JFrame {
             }
         });
         archivoMenu.add(nuevoMenuBtn);
-
-        modificarMenuBtn.setText("Modificar");
-        modificarMenuBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarMenuBtnActionPerformed(evt);
-            }
-        });
-        archivoMenu.add(modificarMenuBtn);
 
         eliminarMenuBtn.setText("Eliminar");
         eliminarMenuBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -175,16 +170,15 @@ public class AbmRubroFrame extends javax.swing.JFrame {
 
     private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
         Rubro rubro = this.getRubroSeleccionado();
-        if(rubro != null){
-        ModificarRubroFrame mrf = new ModificarRubroFrame(rubro);
-        mrf.setVisible(true);
-        this.dispose();
+        if (rubro != null) {
+            ModificarRubroFrame mrf = new ModificarRubroFrame(rubro);
+            mrf.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Rubro - seleccione un rubro");
         }
-        else{
-        JOptionPane.showMessageDialog(this, "Rubro - seleccione un rubro");
-        }
-        
-        
+
+
     }//GEN-LAST:event_modificarBtnActionPerformed
 
     private void eliminarMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarMenuBtnActionPerformed
@@ -194,12 +188,6 @@ public class AbmRubroFrame extends javax.swing.JFrame {
     private void nuevoMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoMenuBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nuevoMenuBtnActionPerformed
-
-    private void modificarMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMenuBtnActionPerformed
-        ModificarRubroFrame mrf = new ModificarRubroFrame();
-        mrf.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_modificarMenuBtnActionPerformed
 
     private void nuevoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoBtnActionPerformed
         NuevoRubroFrame nrf = new NuevoRubroFrame();
@@ -215,7 +203,7 @@ public class AbmRubroFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_volverBtnActionPerformed
 
     private void borrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarBtnActionPerformed
-       this.borrarRubroSeleccionado();
+        this.borrarRubroSeleccionado();
     }//GEN-LAST:event_borrarBtnActionPerformed
 
     /**
@@ -263,7 +251,6 @@ public class AbmRubroFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificarBtn;
-    private javax.swing.JMenuItem modificarMenuBtn;
     private javax.swing.JButton nuevoBtn;
     private javax.swing.JMenuItem nuevoMenuBtn;
     private javax.swing.JTable rubroTabla;
@@ -271,56 +258,55 @@ public class AbmRubroFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void llenartabla() {
-        try{
+        try {
             RubroService rubroService = new RubroService();
             listadoRubro = rubroService.getAllRubros();
-        } catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "error con la base de datos");
         }
-        DefaultTableModel model= new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("CODIGO");
         model.addColumn("NOMBRE");
-        if(listadoRubro!=null && !listadoRubro.isEmpty()){
-            for (Rubro rubro : listadoRubro ){
-            Object[] fila = new Object[2];
-            fila[0] = rubro.getCodigo();
-            fila[1] = rubro.getNombre();
-            model.addRow(fila);
+        if (listadoRubro != null && !listadoRubro.isEmpty()) {
+            for (Rubro rubro : listadoRubro) {
+                Object[] fila = new Object[2];
+                fila[0] = rubro.getCodigo();
+                fila[1] = rubro.getNombre();
+                model.addRow(fila);
             }
-        }  
+        }
         rubroTabla.setModel(model);
     }
 
     private Rubro getRubroSeleccionado() {
-       Rubro rubro = null;
-       int filaSeleccionada = rubroTabla.getSelectedRow();
-       if(filaSeleccionada != -1 && listadoRubro != null && !listadoRubro.isEmpty()){
-           rubro = listadoRubro.get(filaSeleccionada);
-       }
-       else{
-           JOptionPane.showMessageDialog(this, "Rubro - Seleccione un rubro de la lista");
-       }
+        Rubro rubro = null;
+        int filaSeleccionada = rubroTabla.getSelectedRow();
+        if (filaSeleccionada != -1 && listadoRubro != null && !listadoRubro.isEmpty()) {
+            rubro = listadoRubro.get(filaSeleccionada);
+        } else {
+            JOptionPane.showMessageDialog(this, "Rubro - Seleccione un rubro de la lista");
+        }
         return rubro;
     }
 
     private void borrarRubroSeleccionado() {
         int filaSeleccionada = rubroTabla.getSelectedRow();
-        if (filaSeleccionada != -1){
+        if (filaSeleccionada != -1) {
             int confirm = JOptionPane.showConfirmDialog(this,
                     "¿Desea eliminar al Rubro?",
                     "Borrar - Rubro",
                     JOptionPane.OK_CANCEL_OPTION);
-            if (confirm == JOptionPane.OK_OPTION){
+            if (confirm == JOptionPane.OK_OPTION) {
                 Rubro rubroABorrar = getRubroSeleccionado();
                 rubroTabla.removeAll();
-                try{
+                try {
                     new RubroService().deleteRubro(rubroABorrar);
-                }catch(Exception ex){
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(this, "Rubro - Error al borrar rubro. Seleccione un rubro");
                 }
                 this.llenartabla();
             }
         }
     }
-    
+
 }

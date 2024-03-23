@@ -12,6 +12,7 @@ import ar.com.gmeventas.entities.SubRubro;
 import ar.com.gmeventas.services.ProductoService;
 import ar.com.gmeventas.services.RubroService;
 import ar.com.gmeventas.services.SubRubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -31,6 +32,8 @@ public class NuevoProductoFrame extends javax.swing.JFrame {
      */
     public NuevoProductoFrame() {
         this.initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.borrarCampos();
         this.llenarComboRubro();
         this.llenarComboSubRubro();

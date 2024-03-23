@@ -14,6 +14,7 @@ import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.services.FacturaService;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -106,8 +107,10 @@ public class FacturaFrame extends javax.swing.JFrame {
      * Creates new form FacturaFrame
      */
     public FacturaFrame() {
-        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
+//        getContentPane().setBackground(new java.awt.Color(135, 206, 235));
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
         limpiarCampos();
         bloquearCampos();

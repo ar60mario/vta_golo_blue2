@@ -5,6 +5,8 @@
  */
 package ar.com.gmeventas.main;
 
+import ar.com.gmeventas.util.Constantes;
+
 /**
  *
  * @author Mario
@@ -16,7 +18,9 @@ public class VersionFrame extends javax.swing.JFrame {
      */
     public VersionFrame() {
         initComponents();
-        versionTxt.setText("Nro.: 2021-12-018");
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
+        versionTxt.setText("Nro.: 2024-03-021");
         versionTxt.setEditable(false);
         volverBtn.requestFocus();
     }

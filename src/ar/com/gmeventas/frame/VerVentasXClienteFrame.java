@@ -10,6 +10,7 @@ import ar.com.gmeventas.entities.IvaVentas;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.IvaVentasService;
+import ar.com.gmeventas.util.Constantes;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,8 @@ public class VerVentasXClienteFrame extends javax.swing.JFrame {
      */
     public VerVentasXClienteFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 
@@ -380,6 +383,7 @@ public class VerVentasXClienteFrame extends javax.swing.JFrame {
         aTxt.setText("");
         rsTxt.setText("");
         limpiarCombo();
+        ncBtn.setVisible(false);
     }
 
     private void limpiarCombo() {

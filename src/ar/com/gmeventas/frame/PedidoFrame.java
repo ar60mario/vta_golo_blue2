@@ -17,6 +17,7 @@ import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.services.PedidoService;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -109,8 +110,10 @@ public class PedidoFrame extends javax.swing.JFrame {
      * Creates new form PedidoFrame
      */
     public PedidoFrame() {
-        getContentPane().setBackground(new java.awt.Color(192, 192, 192));
+//        getContentPane().setBackground(new java.awt.Color(192, 192, 192));
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
         limpiarCampos();
         bloquearCampos();

@@ -9,6 +9,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.SubRubro;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.SubRubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class AbmSubRubroFrame extends javax.swing.JFrame {
      */
     public AbmSubRubroFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.llenarTabla();
     }
 

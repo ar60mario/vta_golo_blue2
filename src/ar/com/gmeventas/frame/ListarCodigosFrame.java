@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.CodigoBarras;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.CodigosBarraService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,8 @@ public class ListarCodigosFrame extends javax.swing.JFrame {
      */
     public ListarCodigosFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         llenarTabla();
     }
 

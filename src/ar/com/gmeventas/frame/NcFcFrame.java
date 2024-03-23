@@ -14,6 +14,7 @@ import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ConfiguracionService;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.Dispatch;
 import com.jacob.com.LibraryLoader;
@@ -68,6 +69,8 @@ public class NcFcFrame extends javax.swing.JFrame {
      */
     public NcFcFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

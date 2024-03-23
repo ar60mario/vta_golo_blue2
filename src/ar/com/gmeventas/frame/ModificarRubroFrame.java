@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ar.com.gmeventas.frame;
 
 import ar.com.gmeventas.entities.Rubro;
 import ar.com.gmeventas.services.RubroService;
+import ar.com.gmeventas.util.Constantes;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,18 +15,21 @@ import javax.swing.JOptionPane;
  * @author Administrador
  */
 public class ModificarRubroFrame extends javax.swing.JFrame {
-    Rubro rubro ;
+
+    Rubro rubro;
+
     /**
      * Creates new form ModificarRubroFrame
      */
-    public ModificarRubroFrame() {
-        initComponents();
-    }
+
     public ModificarRubroFrame(Rubro ru) {
         initComponents();
-        this.rubro=ru;
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
+        this.rubro = ru;
         this.llenarCampos(rubro);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,15 +139,15 @@ public class ModificarRubroFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-     AbmRubroFrame arf = new AbmRubroFrame();
-       arf.setVisible(true);
-       this.dispose();   
+        AbmRubroFrame arf = new AbmRubroFrame();
+        arf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       AbmRubroFrame arf = new AbmRubroFrame();
-       arf.setVisible(true);
-       this.dispose();
+        AbmRubroFrame arf = new AbmRubroFrame();
+        arf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void guardarMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarMenuBtnActionPerformed
@@ -207,15 +210,15 @@ public class ModificarRubroFrame extends javax.swing.JFrame {
     private void guardar() {
         rubro.setNombre(nombreTxt.getText());
         rubro.setCodigo(Integer.valueOf(idText.getText()));
-        try{
+        try {
             new RubroService().updateRubro(rubro);
             JOptionPane.showMessageDialog(this, "Rubro - Guardado correctamente");
-        } catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Rubro - Error en salvar los rubros");
         }
-       AbmRubroFrame arf = new AbmRubroFrame();
-       arf.setVisible(true);
-       this.dispose();
+        AbmRubroFrame arf = new AbmRubroFrame();
+        arf.setVisible(true);
+        this.dispose();
 
     }
 

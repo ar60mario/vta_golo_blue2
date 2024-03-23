@@ -5,6 +5,7 @@
  */
 package ar.com.gmeventas.main;
 
+import ar.com.gmeventas.util.Constantes;
 import com.jacob.activeX.ActiveXComponent;
 import com.jacob.com.Dispatch;
 import com.jacob.com.LibraryLoader;
@@ -22,6 +23,8 @@ public class ObtenerFacturaFrame extends javax.swing.JFrame {
      */
     public ObtenerFacturaFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

@@ -7,6 +7,7 @@
 package ar.com.gmeventas.frame;
 
 import ar.com.gmeventas.main.MainFrame;
+import ar.com.gmeventas.util.Constantes;
 
 /**
  *
@@ -19,6 +20,8 @@ public class FacturarFrame extends javax.swing.JFrame {
      */
     public FacturarFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.setLocationRelativeTo(null);
     }
 

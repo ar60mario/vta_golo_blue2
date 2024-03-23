@@ -13,6 +13,7 @@ import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ClienteService;
 import ar.com.gmeventas.services.IvaVentasService;
 import ar.com.gmeventas.services.RenglonFacturaService;
+import ar.com.gmeventas.util.Constantes;
 import ar.com.gmeventas.util.DesktopApi;
 import ar.com.gmeventas.util.PDFBuilder;
 import com.google.zxing.BarcodeFormat;
@@ -75,6 +76,8 @@ public class RegenerarFcNcFrame extends javax.swing.JFrame {
      */
     public RegenerarFcNcFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         llenarTabla();
     }

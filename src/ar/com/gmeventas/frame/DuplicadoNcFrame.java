@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.IvaVentas;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.IvaVentasService;
+import ar.com.gmeventas.util.Constantes;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,8 @@ public class DuplicadoNcFrame extends javax.swing.JFrame {
      */
     public DuplicadoNcFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         limpiarTabla();
         desdeFechaTxt.setText(sdf.format(dfe));

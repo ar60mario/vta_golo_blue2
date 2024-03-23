@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.Producto;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import java.awt.print.PrinterException;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,6 +29,8 @@ public class VerProductosFrame extends javax.swing.JFrame {
      */
     public VerProductosFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         tabla = (DefaultTableModel) tablaProductos.getModel();
     }

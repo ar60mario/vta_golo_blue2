@@ -9,6 +9,7 @@ import ar.com.gmeventas.bo.ClienteBO;
 import ar.com.gmeventas.entities.Cliente;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.ClienteService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,6 +30,8 @@ public class AbmClienteFrame extends javax.swing.JFrame {
      */
     public AbmClienteFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.llenarTabla();
         this.setearTabla();
     }

@@ -73,7 +73,21 @@ public class IvaVentasService {
         }
         return fact;
     }
-    //
+    
+    public List<IvaVentas> getSoloFacturasEntreFechas(Date fd, Date fa) throws Exception {
+        List<IvaVentas> fact = null;
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        try {
+            fact = new IvaVentasBO().getSoloFacturasEntreFechas(fd, fa);
+            tx.commit();
+        } catch (Exception ex) {
+            tx.rollback();
+            throw new Exception(ex);
+        }
+        return fact;
+    }
+    
     public List<IvaVentas> getFacturasByFecha(Date fd) throws Exception {
         List<IvaVentas> fact = null;
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();

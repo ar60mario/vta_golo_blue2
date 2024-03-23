@@ -11,6 +11,7 @@ import ar.com.gmeventas.entities.Rubro;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.RenglonFacturaService;
 import ar.com.gmeventas.services.RubroService;
+import ar.com.gmeventas.util.Constantes;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -43,6 +44,8 @@ public class VentasCigarrillosByPeriodoFrame extends javax.swing.JFrame {
      */
     public VentasCigarrillosByPeriodoFrame() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
         limpiarTabla();
     }

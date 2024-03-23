@@ -8,6 +8,7 @@ package ar.com.gmeventas.frame;
 import ar.com.gmeventas.entities.TipoDoc;
 import ar.com.gmeventas.main.MainFrame;
 import ar.com.gmeventas.services.TipoDocService;
+import ar.com.gmeventas.util.Constantes;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,6 +24,8 @@ public class NuevoTipoDocForm extends javax.swing.JFrame {
      */
     public NuevoTipoDocForm() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         limpiarCampos();
     }
 

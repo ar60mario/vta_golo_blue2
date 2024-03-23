@@ -7,6 +7,7 @@ package ar.com.gmeventas.frame;
 
 import ar.com.gmeventas.entities.Producto;
 import ar.com.gmeventas.services.ProductoService;
+import ar.com.gmeventas.util.Constantes;
 import static java.lang.Math.rint;
 import java.util.List;
 import java.util.logging.Level;
@@ -29,6 +30,8 @@ public class MostrarTablaProductosACambiarPrecios extends javax.swing.JFrame {
      */
     public MostrarTablaProductosACambiarPrecios(Integer deCodigo, Integer aCodigo, Float porce) {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(Constantes.getR(),
+                Constantes.getG(), Constantes.getB()));
         this.deCodigo = deCodigo;
         this.aCodigo = aCodigo;
         porcentaje = porce;
